@@ -1,17 +1,17 @@
-import { CellInterface, LivingCell } from './cellNullObjectPattern'
+import { CellInterface, LivingCell } from './cellStatePattern'
 
-export class WorldNullObjectPattern {
+export class WorldStatePattern {
   private cells: CellInterface[][];
 
   private constructor(cells: CellInterface[][]) {
     this.cells = cells;
   }
 
-  public static Create(cells: CellInterface[][]): WorldNullObjectPattern {
-    return new WorldNullObjectPattern(cells);
+  public static Create(cells: CellInterface[][]): WorldStatePattern {
+    return new WorldStatePattern(cells);
   }
 
-  tick(): WorldNullObjectPattern {
+  tick(): WorldStatePattern {
 
     const newCells2 = this.cells.map((row, rowIndex) => {
       return row.map((cell, columnIndex) => {
@@ -20,7 +20,7 @@ export class WorldNullObjectPattern {
       });
     });
 
-    return WorldNullObjectPattern.Create(newCells2);
+    return WorldStatePattern.Create(newCells2);
   }
 
   public getNumberOfAliveNeighboursAt(row: number, column: number): number {

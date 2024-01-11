@@ -36,11 +36,7 @@ export class InvalidCell implements CellInterface {
     throw new Error('Invalid cell state');
   }
 
-  isAlive(): boolean {
-    throw new Error('Invalid cell state');
-  }
-
   toString(): string {
-    throw new Error('Invalid cell state');
+    return 'e';
   }
 }

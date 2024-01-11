@@ -1,5 +1,5 @@
-import { CellInterface, DeadCell, LivingCell } from "../src/cellNullObjectPattern";
-import { WorldNullObjectPattern } from "../src/worldNullObjectPattern";
+import { DeadCell, LivingCell } from "../src/cellStatePattern";
+import { WorldStatePattern } from "../src/worldStatePattern";
 
 describe('A world', () => {
 
@@ -11,10 +11,10 @@ describe('A world', () => {
     ];
 
     // Act
-    const world = WorldNullObjectPattern.Create(cells);
+    const world = WorldStatePattern.Create(cells);
 
     // Assert
-    expect(world).toBeInstanceOf(WorldNullObjectPattern);
+    expect(world).toBeInstanceOf(WorldStatePattern);
     expect(world.toString()).toBe('10\n01');
   });
 
@@ -27,7 +27,7 @@ describe('A world', () => {
     const cells = [
       [aCell, anotherCell],
     ];
-    const world = WorldNullObjectPattern.Create(cells);
+    const world = WorldStatePattern.Create(cells);
 
     // Act
     world.tick();
@@ -47,8 +47,8 @@ describe('A world', () => {
       [new LivingCell(), new LivingCell()],
       [new LivingCell(), new LivingCell()]
     ];
-    const firstWorld = WorldNullObjectPattern.Create(firstWorldCells);
-    const nextWorld = WorldNullObjectPattern.Create(nextWorldCells);
+    const firstWorld = WorldStatePattern.Create(firstWorldCells);
+    const nextWorld = WorldStatePattern.Create(nextWorldCells);
 
     // Act
     const newWorld = firstWorld.tick();
@@ -66,7 +66,7 @@ describe('A world', () => {
       [new LivingCell(), new LivingCell(), new LivingCell(), new LivingCell()],
       [new LivingCell(), new LivingCell(), new LivingCell(), new LivingCell()]
     ];
-    const world = WorldNullObjectPattern.Create(cells);
+    const world = WorldStatePattern.Create(cells);
 
     // Assert
     expect(world.getNumberOfAliveNeighboursAt(0, 0)).toBe(1);
